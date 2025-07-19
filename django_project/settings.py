@@ -140,6 +140,15 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 
 
 LOGIN_REDIRECT_URL = "pages:home"
+
+# django-allauth config
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+SITE_ID = 1
+
 ACCOUNT_LOGOUT_REDIRECT = "pages:home"
 
 ACCOUNT_SESSION_REMEMBER = True
@@ -150,13 +159,8 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
 
-# django-allauth config
-AUTHENTICATION_BACKENDS = (
-    "django.contrib.auth.backends.ModelBackend",
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-SITE_ID = 1
+DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"
+
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
