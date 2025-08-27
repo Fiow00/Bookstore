@@ -10,6 +10,7 @@ import uuid
 class Book(models.Model):
     id = models.UUIDField(
         primary_key = True,
+        db_index = True,
         default = uuid.uuid4,
         editable = False
     )
@@ -21,6 +22,9 @@ class Book(models.Model):
     class Meta:
         permissions = [
             ("special_status", "Can read all books"),
+        ]
+        indexes = [
+            models.Index(fields=["id"], name="id_index"),
         ]
 
     def __str__(self):
